@@ -1,12 +1,16 @@
-uhhh to install you just 
+simple fetch written in python
 
-pip install requirements.txt
+Install
 
-and then you uhh
-uhhh
+```pip install -r requirements.txt```
+```cp genfetch.py ~/.local/bin/genfetch```
+```chmod +x ~/.local/bin/genfetch```
 
-cp main.py ~/.local/bin/genfetch
+Make sure ~/.local/bin is in your $PATH.
 
-yeah thats it
+Configure
 
-to config it you can just edit the file directly (~/.local/bin/genfetch) or whatever
+Quick and dirty:
+Just edit the file directly:
+
+~/.local/bin/genfetch
