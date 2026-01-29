@@ -5,7 +5,7 @@ Install
 ```shell pip install -r requirements.txt
 cp genfetch.py ~/.local/bin/genfetch
 chmod +x ~/.local/bin/genfetch```
-
+```
 Make sure ~/.local/bin is in your $PATH.
 
 Configure
