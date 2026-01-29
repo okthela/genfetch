@@ -10,23 +10,9 @@ import psutil
 from pathlib import Path
 
 cpu_thang = Path("~/.config/genfetch_cpu.info").expanduser()
-
 hostname_check = Path("/etc/hostname")
-
-if not hostname_check.exists():
-    print("Hostname isnt set! (failed to check for /etc/hostname)")
-    exit()
-
 gpu1 = os.popen("lspci | grep VGA").read().strip()
-
 gpu = gpu1.replace("10:00.0 VGA compatible controller:", "")
-
-if not cpu_thang.exists():
-    print("CPU Info doesnt exist, creating it (this avoids long startups)")
-    cpu_not_real1 = cpuinfo.get_cpu_info()
-    cpu_not_real = cpu_not_real1["brand_raw"]
-    os.system(f"touch ~/.config/cpu.info && echo '{cpu_not_real}' >> ~/.config/genfetch_cpu.info")
-
 label_width = 9
 whoami = os.popen("whoami").read().strip()
 whoispc = os.popen("cat /etc/hostname").read().strip()
@@ -42,6 +28,21 @@ packages = os.popen("find /var/db/pkg -mindepth 2 -maxdepth 2 -type d | wc -l").
 shell = os.environ.get("SHELL")
 theme = os.popen("gsettings get org.gnome.desktop.interface gtk-theme").read().strip()
 term = os.environ.get("TERM")
+
+if not hostname_check.exists():
+    print("Hostname isnt set! (failed to check for /etc/hostname)")
+    exit()
+
+gpu1 = os.popen("lspci | grep VGA").read().strip()
+
+gpu = gpu1.replace("10:00.0 VGA compatible controller:", "")
+
+if not cpu_thang.exists():
+    print("CPU Info doesnt exist, creating it (this avoids long startups)")
+    cpu_not_real1 = cpuinfo.get_cpu_info()
+    cpu_not_real = cpu_not_real1["brand_raw"]
+    os.system(f"touch ~/.config/cpu.info && echo '{cpu_not_real}' >> ~/.config/genfetch_cpu.info")
+
 black   = os.popen("tput setaf 0").read()
 red     = os.popen("tput setaf 1").read()
 green   = os.popen("tput setaf 2").read()
