@@ -1,5 +1,4 @@
 #!/usr/bin/python3
-
 import time
 import shutil
 import os
@@ -31,7 +30,7 @@ theme = os.popen("gsettings get org.gnome.desktop.interface gtk-theme").read().s
 term = os.environ.get("TERM")
 line = "- "
 square = "■"
-ram_usage = int(ram_max) - int(ram_avaliable)
+ram_usage = float(ram_max) - float(ram_avaliable)
 black   = os.popen("tput setaf 0").read()
 red     = os.popen("tput setaf 1").read()
 green   = os.popen("tput setaf 2").read()
@@ -58,7 +57,7 @@ print(f"{red}{line}{red}{'PC 󰍹':<{label_width}} {whoami}@{whoispc}")
 print(f"{red}{line}{red}{'CPU ':<{label_width}} {cpu} x {cores}, util: {cpu_percentage}%")
 print(f"{red}{line}{red}{'GPU 󰢮':<{label_width}}{gpu}")
 print(f"{red}{line}{red}{'Kernel ':<{label_width}} {platform.release()}")
-print(f"{red}{line}{red}{'RAM ':<{label_width}} {ram_max:.1f} GiB ({ram_usage} GiB used)")
+print(f"{red}{line}{red}{'RAM ':<{label_width}} {ram_max:.1f} GiB ({ram_usage:.2f} GiB used)")
 print(f"{red}{line}{red}Uptime   {uptime / 3600:.1f} hours")
 print(f"{red}{line}{red}{'Storage 󱊟 :':<{label_width}}")
 for parts in disks:
